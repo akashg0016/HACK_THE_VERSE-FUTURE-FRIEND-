@@ -1,0 +1,17 @@
+/* styles.css */
+.chat-bar-input-block {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+button.clicked {
+  background-color: yellow;
+}

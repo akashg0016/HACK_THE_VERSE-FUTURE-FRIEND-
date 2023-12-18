@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chat Bot</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/chat.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ===== CSS ===== -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/style_home.css') }}"
+    />
+
+    <!--===== MAIN JS =====-->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='assets/js/main.js') }}"
+    ></script>
+
+    <style>
+      /* Add CSS styles for the right-side section */
+      #chatbot-section {
+        float: right;
+        width: 50%; /* Adjust the width as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="header__logo">Our System</a>
+
+      <i class="bx bx-menu header__toggle" id="header-toggle"></i>
+
+      <nav class="nav" id="nav-menu">
+        <div class="nav__content bd-grid">
+          <a href="" class="nav__perfil">
+            <div class="nav__img">
+              <img
+                src="{{ url_for('static', filename='assets/img/logo.jpg') }}"
+                width="50"
+                height="82"
+                alt="Logo"
+              />
+            </div>
+          </a>
+
+          <div class="nav__menu">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#" class="nav__link active">Home</a>
+              </li>
+
+              <li class="nav__item dropdown">
+                <a href="#" class="nav__link dropdown__link"
+                  >About us <i class="bx bx-chevron-down dropdown__icon"></i
+                ></a>
+
+                <ul class="dropdown__menu">
+                  <li class="dropdown__item">
+                    <a href="#" class="nav__link">YetToDiscover</a>
+                  </li>
+                  <li class="dropdown__item">
+                    <a href="#" class="nav__link">YetToDiscover</a>
+                  </li>
+                  <li class="dropdown__item">
+                    <a href="#" class="nav__link">YetToDiscover</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav__item">
+                <a href="predict_your_path" class="nav__link"
+                  >Predict Your Path</a
+                >
+              </li>
+
+              <li class="nav__item dropdown">
+                <a href="#" class="nav__link dropdown__link"
+                  >Works <i class="bx bx-chevron-down dropdown__icon"></i
+                ></a>
+
+                <ul class="dropdown__menu">
+                  <li class="dropdown__item">
+                    <a href="#" class="nav__link">YetToDiscover</a>
+                  </li>
+                  <li class="dropdown__item">
+                    <a href="#" class="nav__link">YetToDiscover</a>
+                  </li>
+                  <li class="dropdown__item">
+                    <a href="#" class="nav__link">YetToDiscover</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- class="nav__link text-warning" -->
+
+              <li class="nav__item">
+                <a href="#" class="nav__link">Explore Careers</a>
+              </li>
+              <li class="nav__item">
+                <a href="FAQs" class="nav__link">FAQs</a>
+              </li>
+              <li class="nav__item">
+                <a href="#" class="nav__link">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <br /><br />
+
+    <!-- First Image -->
+    <div class="left-side">
+      <img
+        src="{{ url_for('static', filename='assets/img/p1.jpg') }}"
+        alt="Image 1"
+        height="80"
+        width="340"
+      />
+    </div>
+
+    <!-- Second Image -->
+    <div class="left-side" , style="position: relative">
+      <img
+        src="{{ url_for('static', filename='assets/img/p2.jpg') }}"
+        alt="Image 2"
+        width="340"
+      />
+    </div>
+
+    <center>
+      <div class="top">
+        <img
+          src="{{ url_for('static', filename='assets/img/L.jpg') }}"
+          alt="Centered Image"
+          height="670px"
+          width="400px"
+        />
+      </div>
+    </center>
+
+    <!-- Right-side section for the chatbot solution -->
+
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+      <button id="chat-button" type="button" class="collapsible">
+        Chat with AI - Your personalized Career Guidance Assistance
+        <i
+          id="chat-icon"
+          style="color: #fff"
+          class="fa fa-fw fa-comments-o"
+        ></i>
+      </button>
+
+      <div class="content">
+        <div class="full-chat-block">
+          <!-- Message Container -->
+          <div class="outer-container">
+            <div class="chat-container">
+              <!-- Messages -->
+              <div id="chatbox">
+                <h5 id="chat-timestamp"></h5>
+                <p id="botStarterMessage" class="botText">
+                  <span
+                    >Loading...A new way to predict your career without anyone's
+                    influence <br
+                  /></span>
+                </p>
+              </div>
+
+              <!-- User input box -->
+              <div class="chat-bar-input-block">
+                <div id="userInput">
+                  <input
+                    id="textInput"
+                    class="input-box"
+                    type="text"
+                    name="msg"
+                    placeholder="Tap 'Enter' to send a message"
+                  />
+                </div>
+
+                <div class="chat-bar-icons">
+                  <i
+                    id="chat-icon"
+                    style="color: crimson"
+                    class="fa fa-fw fa-heart"
+                    onclick="heartButton()"
+                  ></i>
+                  <i
+                    id="chat-icon"
+                    style="color: #333"
+                    class="fa fa-fw fa-send"
+                    onclick="sendButton()"
+                  ></i>
+                </div>
+              </div>
+
+              <div id="chat-bar-bottom">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/responses.js') }}"></script>
+  </body>
+</html>
